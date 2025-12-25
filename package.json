@@ -1,0 +1,25 @@
+{
+  "name": "schedule-reflow",
+  "version": "1.0.0",
+  "description": "Production Schedule Reflow Algorithm - Technical Test Solution",
+  "main": "dist/demo.js",
+  "scripts": {
+    "build": "tsc",
+    "demo": "npm run build && node dist/demo.js",
+    "start": "npm run demo",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": ["scheduling", "manufacturing", "dag", "production"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "luxon": "^3.7.2"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.7.1",
+    "@types/node": "^25.0.3",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16"
+  }
+}
