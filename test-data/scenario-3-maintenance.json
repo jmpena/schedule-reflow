@@ -1,0 +1,69 @@
+{
+  "name": "Scenario 3: Maintenance Window Avoidance",
+  "description": "Work orders must avoid scheduled maintenance window on Jan 16 10AM-2PM",
+  "workCenters": [
+    {
+      "docId": "wc-line-c",
+      "docType": "workCenter",
+      "data": {
+        "name": "Extrusion Line C",
+        "shifts": [
+          { "dayOfWeek": 1, "startHour": 8, "endHour": 17 },
+          { "dayOfWeek": 2, "startHour": 8, "endHour": 17 },
+          { "dayOfWeek": 3, "startHour": 8, "endHour": 17 },
+          { "dayOfWeek": 4, "startHour": 8, "endHour": 17 },
+          { "dayOfWeek": 5, "startHour": 8, "endHour": 17 }
+        ],
+        "maintenanceWindows": [
+          {
+            "startDate": "2025-01-16T10:00:00.000Z",
+            "endDate": "2025-01-16T14:00:00.000Z",
+            "reason": "Scheduled preventive maintenance"
+          }
+        ]
+      }
+    }
+  ],
+  "manufacturingOrders": [
+    {
+      "docId": "mo-33333",
+      "docType": "manufacturingOrder",
+      "data": {
+        "manufacturingOrderNumber": "MO-33333",
+        "itemId": "PIPE-300",
+        "quantity": 2000,
+        "dueDate": "2025-01-18T17:00:00.000Z"
+      }
+    }
+  ],
+  "workOrders": [
+    {
+      "docId": "wo-301",
+      "docType": "workOrder",
+      "data": {
+        "workOrderNumber": "WO-301",
+        "manufacturingOrderId": "mo-33333",
+        "workCenterId": "wc-line-c",
+        "startDate": "2025-01-16T08:00:00.000Z",
+        "endDate": "2025-01-16T11:00:00.000Z",
+        "durationMinutes": 180,
+        "isMaintenance": false,
+        "dependsOnWorkOrderIds": []
+      }
+    },
+    {
+      "docId": "wo-302",
+      "docType": "workOrder",
+      "data": {
+        "workOrderNumber": "WO-302",
+        "manufacturingOrderId": "mo-33333",
+        "workCenterId": "wc-line-c",
+        "startDate": "2025-01-16T11:00:00.000Z",
+        "endDate": "2025-01-16T14:00:00.000Z",
+        "durationMinutes": 180,
+        "isMaintenance": false,
+        "dependsOnWorkOrderIds": ["wo-301"]
+      }
+    }
+  ]
+}

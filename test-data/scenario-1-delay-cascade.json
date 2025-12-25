@@ -1,0 +1,77 @@
+{
+  "name": "Scenario 1: Delay Cascade",
+  "description": "Work order WO-001 is delayed, causing downstream orders WO-002 and WO-003 to shift",
+  "workCenters": [
+    {
+      "docId": "wc-line-a",
+      "docType": "workCenter",
+      "data": {
+        "name": "Extrusion Line A",
+        "shifts": [
+          { "dayOfWeek": 1, "startHour": 8, "endHour": 17 },
+          { "dayOfWeek": 2, "startHour": 8, "endHour": 17 },
+          { "dayOfWeek": 3, "startHour": 8, "endHour": 17 },
+          { "dayOfWeek": 4, "startHour": 8, "endHour": 17 },
+          { "dayOfWeek": 5, "startHour": 8, "endHour": 17 }
+        ],
+        "maintenanceWindows": []
+      }
+    }
+  ],
+  "manufacturingOrders": [
+    {
+      "docId": "mo-12345",
+      "docType": "manufacturingOrder",
+      "data": {
+        "manufacturingOrderNumber": "MO-12345",
+        "itemId": "PIPE-100",
+        "quantity": 1000,
+        "dueDate": "2025-01-20T17:00:00.000Z"
+      }
+    }
+  ],
+  "workOrders": [
+    {
+      "docId": "wo-001",
+      "docType": "workOrder",
+      "data": {
+        "workOrderNumber": "WO-001",
+        "manufacturingOrderId": "mo-12345",
+        "workCenterId": "wc-line-a",
+        "startDate": "2025-01-15T08:00:00.000Z",
+        "endDate": "2025-01-15T10:00:00.000Z",
+        "durationMinutes": 120,
+        "isMaintenance": false,
+        "dependsOnWorkOrderIds": []
+      }
+    },
+    {
+      "docId": "wo-002",
+      "docType": "workOrder",
+      "data": {
+        "workOrderNumber": "WO-002",
+        "manufacturingOrderId": "mo-12345",
+        "workCenterId": "wc-line-a",
+        "startDate": "2025-01-15T10:00:00.000Z",
+        "endDate": "2025-01-15T13:00:00.000Z",
+        "durationMinutes": 180,
+        "isMaintenance": false,
+        "dependsOnWorkOrderIds": ["wo-001"]
+      }
+    },
+    {
+      "docId": "wo-003",
+      "docType": "workOrder",
+      "data": {
+        "workOrderNumber": "WO-003",
+        "manufacturingOrderId": "mo-12345",
+        "workCenterId": "wc-line-a",
+        "startDate": "2025-01-15T13:00:00.000Z",
+        "endDate": "2025-01-15T16:00:00.000Z",
+        "durationMinutes": 180,
+        "isMaintenance": false,
+        "dependsOnWorkOrderIds": ["wo-002"]
+      }
+    }
+  ]
+}

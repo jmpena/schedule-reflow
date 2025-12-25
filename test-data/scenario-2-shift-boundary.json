@@ -1,0 +1,49 @@
+{
+  "name": "Scenario 2: Shift Boundary Handling",
+  "description": "Work order starts at 4PM Mon, needs 120 min, shift ends 5PM. Should pause and resume Tue 8AM.",
+  "workCenters": [
+    {
+      "docId": "wc-line-b",
+      "docType": "workCenter",
+      "data": {
+        "name": "Extrusion Line B",
+        "shifts": [
+          { "dayOfWeek": 1, "startHour": 8, "endHour": 17 },
+          { "dayOfWeek": 2, "startHour": 8, "endHour": 17 },
+          { "dayOfWeek": 3, "startHour": 8, "endHour": 17 },
+          { "dayOfWeek": 4, "startHour": 8, "endHour": 17 },
+          { "dayOfWeek": 5, "startHour": 8, "endHour": 17 }
+        ],
+        "maintenanceWindows": []
+      }
+    }
+  ],
+  "manufacturingOrders": [
+    {
+      "docId": "mo-22222",
+      "docType": "manufacturingOrder",
+      "data": {
+        "manufacturingOrderNumber": "MO-22222",
+        "itemId": "PIPE-200",
+        "quantity": 500,
+        "dueDate": "2025-01-17T17:00:00.000Z"
+      }
+    }
+  ],
+  "workOrders": [
+    {
+      "docId": "wo-201",
+      "docType": "workOrder",
+      "data": {
+        "workOrderNumber": "WO-201",
+        "manufacturingOrderId": "mo-22222",
+        "workCenterId": "wc-line-b",
+        "startDate": "2025-01-15T16:00:00.000Z",
+        "endDate": "2025-01-15T18:00:00.000Z",
+        "durationMinutes": 120,
+        "isMaintenance": false,
+        "dependsOnWorkOrderIds": []
+      }
+    }
+  ]
+}
