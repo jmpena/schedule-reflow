@@ -311,7 +311,7 @@ console.log(result.isValid);             // Constraint check
 
 ## 🎥 Demo Video
 
-TBD - Recording demo
+[Watch the 5-minute demo on Loom](https://www.loom.com/share/b37144bdd6e340c2b4fb14866937e647)
 
 ---
 
